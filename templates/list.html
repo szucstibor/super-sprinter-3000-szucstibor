@@ -1,3 +1,30 @@
 <html>
-    <p>List</p>
-</html>
+    <head>
+        <meta charset='utf-8'>
+        <title>User Story Manager</title>
+    </head>
+    <body>
+        <h1><b>User Story Manager</b></h1>
+        <table border='1'>
+            <tr>
+                <th>Story title</th>
+                <th>USer story</th>
+                <th>Acceptance criteria</th>
+                <th>Business Value</th>
+                <th>Estimation</th>
+                <th>Status</th>
+                <th>Actions</th>
+            <tbody>
+                {% for line in stories %}
+                <tr>
+                    <td>{{line[0]}}</td>
+                    <td>{{line[1]}}</td>
+                    <td>{{line[2]}}</td>
+                    <td>{{line[3]}}</td>
+                    <td>{{line[4]}}</td>
+                    <td>{{line[5]}}</td>
+                    <td>{{line[6]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>

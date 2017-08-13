@@ -4,12 +4,15 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def route_index():
-    return route_edit()
+def route_list():
+    with open('stories.csv', 'r') as story:
+        reader = csv.reader(story)
+        stories = [row for row in reader]
+    return render_template('list.html', stories=stories)
 
 
 @app.route('/story')
-def route_edit():
+def route_story():
     return render_template("form.html")
 
 
@@ -24,10 +27,16 @@ def save():
     story.append(request.form['estimation'])
     story.append(request.form['status'])
     with open('stories.csv', 'a') as stories:
-        writer = csv.writer(stories)
+        writer = csv.writer(stories, delimiter=',')
         writer.writerow(story)
-
     return "Oh hi, hello. Looks like everything works. But for how long?"
+
+
+def get_table_from_file(file_name):
+    with open(file_name, "r") as file:
+        lines = file.readlines()
+        table = [element.replace("\n", "").split(";") for element in lines]
+    return table
 
 
 if __name__ == "__main__":
