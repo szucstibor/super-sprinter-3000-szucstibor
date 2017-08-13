@@ -5,8 +5,12 @@
     </head>
     <body>
         <h1><b>User Story Manager</b></h1>
+        <form action="http://127.0.0.1:5000/story">
+            <input type="submit" value="Create a new story!">
+        </form>
         <table border='1'>
             <tr>
+                <th>ID</th>
                 <th>Story title</th>
                 <th>USer story</th>
                 <th>Acceptance criteria</th>
@@ -24,6 +28,9 @@
                     <td>{{line[4]}}</td>
                     <td>{{line[5]}}</td>
                     <td>{{line[6]}}</td>
+                    <td><a href="http://127.0.0.1:5000/delete"><img src="https://maxcdn.icons8.com/Share/icon/p1em/Editing//trash1600.png" width="20" height="20"></a>
+                    <a href="http://127.0.0.1:5000/update"><img src="http://simpleicon.com/wp-content/uploads/pencil.png" width="20" height="20"></a></td>
+
                 </tr>
                 {% endfor %}
             </tbody>

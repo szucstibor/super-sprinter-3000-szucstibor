@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request, session
 import csv
+from os import urandom
 app = Flask(__name__)
 
 
@@ -19,7 +20,9 @@ def route_story():
 @app.route('/save-story', methods=['POST'])
 def save():
     story = []
+    table = get_table_from_file("stories.csv")
     print("POST request recieved!")
+    story.append(urandom(1))
     story.append(request.form['title'])
     story.append(request.form['story'])
     story.append(request.form['criteria'])
@@ -29,7 +32,16 @@ def save():
     with open('stories.csv', 'a') as stories:
         writer = csv.writer(stories, delimiter=',')
         writer.writerow(story)
-    return "Oh hi, hello. Looks like everything works. But for how long?"
+    return redirect("/")
+
+
+@app.route('/delete')
+def delete():
+    table = get_table_from_file("stories.csv")
+    for record in table:
+        if record[0] == 1:
+            table.pop(record)
+    return render_template("list.html")
 
 
 def get_table_from_file(file_name):
