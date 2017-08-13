@@ -10,15 +10,15 @@
         <form action="/save-story" method="POST">
             <p><label for="title">Story Title</label><br>
                 <textarea rows="1" cols="70" name="title"></textarea></p>
-            <p><label for="title">User Story</label><br>
+            <p><label for="story">User Story</label><br>
                 <textarea rows="6" cols="70" name="story"></textarea></p>
-            <p><label for="title">Acceptance Criteria</label><br>
+            <p><label for="criteria">Acceptance Criteria</label><br>
                 <textarea rows="6" cols="70" name="criteria"></textarea></p>
-            <p><label for="title">Business Value</label><br>
+            <p><label for="business_value">Business Value</label><br>
                 <input name="business_value" type="number" min="100" max="1500" step="100"></p>
-            <p><label for="title">Estimation</label><br>
-                <input name="estiamtion" type="number" min="0.5" max="40" step="0.5"></p>
-            <p><label for="title">Status</label><br>
+            <p><label for="estimation">Estimation</label><br>
+                <input type="number" name="estimation" min="0.5" max="40" step="0.5"></p>
+            <p><label for="status">Status</label><br>
                 <select name="status">
                     <option value="planning">Planning</option>
                     <option value="todo">TODO</option>

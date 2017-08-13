@@ -15,15 +15,18 @@ def route_edit():
 
 @app.route('/save-story', methods=['POST'])
 def save():
+    story = []
     print("POST request recieved!")
-    title = request.form['title']
-    story = request.form['story']
-    acceptance = request.form['criteria']
-    business_value = request.form['business_value']
-    print("Business value working")
-    estimation = request.form['estimation']
-    print("estimation working")
-    status = request.form['status']
+    story.append(request.form['title'])
+    story.append(request.form['story'])
+    story.append(request.form['criteria'])
+    story.append(request.form['business_value'])
+    story.append(request.form['estimation'])
+    story.append(request.form['status'])
+    with open('stories.csv', 'a') as stories:
+        writer = csv.writer(stories)
+        writer.writerow(story)
+
     return "Oh hi, hello. Looks like everything works. But for how long?"
 
 
